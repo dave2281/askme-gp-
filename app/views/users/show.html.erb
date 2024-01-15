@@ -1,2 +1,30 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.name %></h1>
+
+<div>
+  <%= image_tag user_avatar(@user), alt: '[Photo]'  %>
+</div>
+
+<h2>@<%= @user.username %></h2>
+
+<a href="#" class="button button-green">Задать вопрос</a>
+
+<% @questions.each do |question| %>
+  <%= render partial: 'questions/question', object: question %>
+<% end %>
+
+<div class="user-question-form buffer-both">
+  <div class="form">
+    <%= form_for @new_question do |f| %>
+      <%= f.hidden_field :user_id %>
+
+      <div class="form-field">
+        <%= f.label "Your question for @#{@user.username}", class: 'form-label' %>
+        <%= f.text_area :text, class: 'form-textarea' %>
+      </div>
+
+      <div class="form-action">
+        <%= submit_tag 'Ask question', class: 'button button-green' %>
+      </div>
+    <% end %>
+  </div>
+</div>
