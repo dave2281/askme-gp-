@@ -1,42 +1,30 @@
 class UsersController < ApplicationController
   def index
-    @users = [
-      User.new(
-      id: 1,
-      name: 'John',
-      email: 'john@gmail.com',
-      username: '@johnyboy',
-      avatar_url: 'https://gravatar.com/avatar/f449c85576a6478bcec3a38e2072e12a?s=400&d=mp&r=x'),
-      
-      User.new(
-      id: 2,
-      name: 'Mike',
-      email: 'mike@gmail.com',
-      username: '@mikeboy',
-      avatar_url: 'https://gravatar.com/avatar/f449c85576a6478bcec3a38e2072e12a?s=400&d=mp&r=x')
-  
-  ]
+    @users = User.all
   end
 
   def new
+    @user = User.new
   end
+
+  def create
+    @user = User.new(user_params)
+
+    @user.save
+  end
+  
 
   def edit
   end
 
   def show
-    @user = User.new(
-      id: 1,
-      name: 'John',
-      email: 'john@gmail.com',
-      username: '@johnyboy',
-      avatar_url: 'https://gravatar.com/avatar/f449c85576a6478bcec3a38e2072e12a?s=400&d=mp&r=x')
-
-    @questions = [
-      Question.new(text: 'How are you?', created_at: Date.parse('20.02.1922')),
-      Question.new(text: 'Fine!', created_at: Date.parse('20.02.1943'))
-    ]
-
-    @new_question = Question.new
+    
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :avatar_url )
+  end
+
 end

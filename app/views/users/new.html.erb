@@ -1,2 +1,39 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="container content-wrapper buffer-both">
+  <h1 class="title-medium">Join us!</h1>
+
+  <div class="column-1-2">
+    <div class="form">
+      <%= form_for @user do |f| %>
+        <div class="form-field">
+          <%= f.label :email, 'Login (email)', class: 'form-label' %>
+          <%= f.text_field :email, class: 'form-text-field' %>
+        </div>
+
+        <div class="form-field">
+          <%= f.label :username, 'Username', class: 'form-label' %>
+          <%= f.text_field :username, class: 'form-text-field' %>
+        </div>
+
+        <div class="form-field">
+          <%= f.label :name, 'Name', class: 'form-label' %>
+          <%= f.text_field :name, class: 'form-text-field' %>
+        </div>
+
+        <div class="form-field">
+          <%= f.label :password, 'Password', class: 'form-label' %>
+          <%= f.password_field :password, class: 'form-text-field' %>
+        </div>
+
+        <div class="form-field">
+          <%= f.label :password_confirmation, 'Password_confirmation', class: 'form-label' %>
+          <%= f.password_field :password_confirmation, class: 'form-text-field' %>
+        </div>
+
+        <div class="form-action">
+          <%= f.submit 'Register', disable_with: 'Registering...', class: 'button button-small button-dark' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
