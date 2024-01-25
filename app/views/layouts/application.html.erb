@@ -16,8 +16,12 @@
       </div>
 
       <div class="header-nav">
-        <%= link_to 'Sign up', sign_up_path, class: 'button button-light button-small' %>
-        <%= link_to 'Sign in', log_in_path, class: 'button button-light button-small' %>
+        <% if current_user %>
+          <%= link_to "@#{current_user.username}", user_path(current_user) %>
+          <%= link_to 'Log out', log_out_path %>
+        <% else %>
+          <%= link_to 'Sing up', sign_up_path, class: 'button button-light button-small' %>
+          <%= link_to 'Sign in', path, class: 'link' %>
       </div>
     </div>
   </div>

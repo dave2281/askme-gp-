@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    redirect_to root_url, alert: 'You already signed in!' if current_user.present?
     @user = User.new
   end
 
