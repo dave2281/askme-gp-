@@ -1,9 +1,22 @@
-<%= javascript_include_tag 'custom', 'data-turbolinks-track': 'reload' %>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(function() {
+  $('#ask-button').click(function() {
+    $('#ask-form').slideToggle(300);
+    return false;
+    });
+  });
+</script>
 
 <div class="user-header text-center">
   <h1 class="title-medium">
     <%= @user.name %>
   </h1>
+
+  <div class="buffer-both">
+    <%= link_to 'Edit profile!', edit_user_path(@user) %>
+  </div>
 
   <div class="user-image-div">
     <%= image_tag user_avatar(@user), class: 'user-image', alt: '[Photo]' %>
