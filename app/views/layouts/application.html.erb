@@ -10,8 +10,15 @@
 </head>
 <body>
   <div class="header">
-    <div class="header-logo">
-      <h1 class="header-title"><%= link_to 'Good questions', root_path %></h1>
+    <div class="container">
+      <div class="header-logo">
+        <h1 class="header-title"><%= link_to 'Good questions', root_path %></h1>
+      </div>
+
+      <div class="header-nav">
+        <%= link_to 'Sign up', sign_up_path, class: 'button button-light button-small' %>
+        <%= link_to 'Sign in', log_in_path, class: 'button button-light button-small' %>
+      </div>
     </div>
   </div>
 
