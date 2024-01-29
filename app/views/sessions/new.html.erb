@@ -1,12 +1,12 @@
-<div class="contrainer content-wrapper buffer-both">
-  <h1 class="title-medium">Sign in</h1>
+<div class="container content-wrapper buffer-both">
+  <h1 class="title-medium">Log in</h1>
 
   <div class="column-1-2">
     <div class="form">
-      <%= form_tag session_path do %>
+      <%= form_tag sessions_path do %>
         <div class="form-field">
           <%= label_tag :email, 'Login(email)', class: 'form-label' %>
-          <%= text_field_tag :email, params(:email), class: 'form-text-field' %>
+          <%= text_field_tag :email, params[:email], class: 'form-text-field' %>
         </div>
 
         <div class="form-field">

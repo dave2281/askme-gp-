@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.authenticate(params[:email], params[:password])
 
     if @user.present?
-      sessions[:user_id] = @user.id 
+      session[:user_id] = @user.id 
       redirect_to root_url, notice: 'Success!'
     else
       flash.now.alert = 'Incorrect pass or email'
@@ -15,5 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session[:user_id] = nil 
+    redirect_to root_url, notice: 'You just logged out! Come back.'
   end
 end

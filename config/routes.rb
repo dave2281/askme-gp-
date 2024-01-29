@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'users#index'
 
   resources :users, except: [:destroy]
-  resources :sessions, only: [:new,:create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
   resources :questions
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
