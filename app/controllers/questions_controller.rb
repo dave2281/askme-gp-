@@ -1,8 +1,8 @@
 class QuestionsController < ApplicationController
-  before_action :load_question, only: %i[ show edit update destroy ]
+  before_action :load_question, only: [:edit, :update, :destroy ]
   before_action :authorize_user, except: [:create]
 
-  # GET /questions/1/edit
+  # GET /questions/1
   def edit
   end
 
@@ -11,16 +11,16 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @question.save 
-      redirect_to users_path(@question.user), notice: 'Question was successfully created.'
+      redirect_to user_path(@question.user), notice: 'Question was successfully created.'
     else
-      render :new
+      render :edit
     end
   end
 
   # PATCH/PUT /questions/1 or /questions/1.json
   def update
     if @question.update(question_params)
-      redirect_to users_path(@question.user), notice: 'Question was successfully updated.'
+      redirect_to user_path(@question.user), notice: 'Question was successfully updated.'
     else
       render :edit
     end
@@ -31,7 +31,15 @@ class QuestionsController < ApplicationController
     user = @question.user
     @question.destroy
 
-    redirect_to users_path(user), notice: 'Question was successfully deleted.'
+    respond_to do |format|
+      format.html {redirect_to user_path(user), notice: 'Was successfully destroyed!'}
+      format.json {head :no_content}
+    end
+
+    # user = @question.user
+    # @question.destroy
+
+    # redirect_to user_path(user), notice: 'Question was successfully deleted.'
   end
 
   private

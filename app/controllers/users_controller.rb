@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   
   def update
     if @user.update(user_params)
-      redirect_to users_path(@user), notice: 'Success, data was updated!'
+      redirect_to user_path(@user), notice: 'Success, data was updated!'
     else 
       render 'edit'
     end

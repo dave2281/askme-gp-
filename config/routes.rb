@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users, except: [:destroy]
   resources :sessions, only: [:new, :create, :destroy]
   resources :questions, except: [:show, :new, :index]
+
+  #resources :users, only: [:index, :create, :update, :delete, :show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,4 +14,5 @@ Rails.application.routes.draw do
   get 'sign_up' => 'users#new'
   get 'log_out' => 'sessions#destroy'
   get 'log_in'  => 'sessions#new'
+  # get '/questions/:id', to: 'questions#destroy'
 end
